@@ -49,55 +49,50 @@ class Calculadora {
     }
 
     /** Metodo que suma ambos atributos
-     * @param FLOAT $a, $b
      * @return FLOAT
      */
-    public function sumar($a, $b) {
+    public function sumar() {
         //FLOAT $suma
-        $suma=$a+$b;
+        $suma=$this->getPrimerNumero()+$this->getSegundoNumero();
         return $suma;
     }
 
     /** Metodo que resta ambos atributos
-     * @param FLOAT $a, $b
      * @return FLOAT
      */
-    public function restar($a, $b) {
+    public function restar() {
         //FLOAT $resta
-        $resta=$a-$b;
+        $resta=$this->getPrimerNumero()-$this->getSegundoNumero();
         return $resta;
     }
 
     /** Metodo que multiplica ambos atributos
-     * @param FLOAT $a, $b
      * @return FLOAT
      */
-    public function multiplicar($a, $b) {
+    public function multiplicar() {
         //FLOAT $multiplicacion
-        $multiplicacion=$a*$b;
+        $multiplicacion=$this->getPrimerNumero()*$this->getSegundoNumero();
         return $multiplicacion;
     }
 
     /** Metodo que divide ambos atributos
-     * @param FLOAT $a, $b
      * @return FLOAT
      */
-    public function dividir($a, $b) {
+    public function dividir() {
         //FLOAT $division
-        if($b==0){
-            echo "El divisor no puede ser cero (0)";
+        if($this->getSegundoNumero()==0){
+            throw new ErrorException("No es posible la division con un divisor cero (0)");//$division=0 o $error=/true/false;
         }else{
-            $division=$a/$b;
-            return $division;
+            $division=$this->getPrimerNumero()/$this->getSegundoNumero();
         }
+        return $division;
     }
 
     /** Metodo __toString que nos permite leer los valores de los atributos como una cadena de caracteres
      * @return STRING
      */
-    public function __toString()
-    {
-        return "El primer numero es: ".$this->getPrimerNumero()."\nEl segundo numero es: ".$this->getSegundoNumero();
+    public function __toString() {
+        return "El primer numero es: ".$this->getPrimerNumero()."\nEl segundo numero es: ".$this->getSegundoNumero(). "\n";
     }
 }
 ?>
